@@ -22,7 +22,7 @@
       .container p{
         margin-bottom: .1em;
       }
-      
+
       iframe,
       img{
         display: block;
@@ -51,13 +51,13 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-             <br><br> 
+             <br><br>
             <h1>GModal</h1>
             <p>A tiny easy to use modal with zero dependencies:</p>
 
             <code>
               </br>
-              new GModal(".js-modal", {</br>
+              new GModal.init(".js-modal", {</br>
                 &nbsp;&nbsp;closeDelay: 200,</br>
               });</br>
             </code>
@@ -93,7 +93,7 @@
               data-open="tmHorizontalIn"
               data-close="tmHorizontalOut"
             </code>
-            
+
             <br>
             <p>To use custom effects create css animation and call it in data-open/close attributes</p>
             <br>
@@ -114,21 +114,15 @@
           </button>
           <h2>Login</h2>
           <form>
-            <!-- Email input -->
             <div class="form-outline mb-2">
               <input type="email" id="form2Example1" class="form-control" required/>
               <label class="form-label" for="form2Example1">Email address</label>
             </div>
-
-            <!-- Password input -->
             <div class="form-outline mb-2">
               <input type="password" id="form2Example2" class="form-control" />
               <label class="form-label" for="form2Example2">Password</label>
             </div>
-
-            <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-2">Sign in</button>
-
           </form>
         </div>
       </div>
@@ -172,7 +166,7 @@
 
     <script src="./gmodal.js"></script>
     <script>
-      new GModal(".js-modal", {
+      new GModal.init(".js-modal", {
         closeDelay: 200,
       });
     </script>

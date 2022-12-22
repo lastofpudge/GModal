@@ -1,127 +1,134 @@
 /**
  * GModal core js file
  */
+const GModal = (() => {
+  'use strict'
 
-'use strict'
+  class Modal {
+    el: any
+    scrollBarWidth: number
+    options: {
+      closeDelay: 200
+    }
 
-class GModal {
-  el: any
-  scrollBarWidth: number
-  options: {
-    closeDelay: 200
-  }
+    constructor(el, options) {
+      this.el = el
+      this.options = options
+      this.scrollBarWidth = 0
+      this.initialize()
+    }
 
-  constructor(el, options) {
-    this.el = el
-    this.options = options
-    this.scrollBarWidth = 0
-    this.initialize()
-  }
+    _supportsTouchEvents() {
+      return 'ontouchstart' in window
+    }
 
-  _supportsTouchEvents() {
-    return 'ontouchstart' in window
-  }
+    _getScrollBarWidth() {
+      const scrollDiv = document.createElement('div')
+      scrollDiv.setAttribute('style', 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;')
+      document.body.appendChild(scrollDiv)
+      const scrollWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+      document.body.removeChild(scrollDiv)
 
-  _getScrollBarWidth() {
-    const scrollDiv = document.createElement('div')
-    scrollDiv.setAttribute('style', 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;')
-    document.body.appendChild(scrollDiv)
-    const scrollWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
-    document.body.removeChild(scrollDiv)
+      return scrollWidth
+    }
 
-    return scrollWidth
-  }
+    initialize() {
+      const pageHasScroll = window.innerWidth > document.documentElement.clientWidth
 
-  initialize() {
-    const pageHasScroll = window.innerWidth > document.documentElement.clientWidth
+      if (pageHasScroll) this.scrollBarWidth = this._getScrollBarWidth()
 
-    if (pageHasScroll) this.scrollBarWidth = this._getScrollBarWidth()
+      const triggerEls = document.querySelectorAll(this.el)
+      triggerEls.forEach((el) => {
+        this.onOpen(el)
+      })
 
-    const triggerEls = document.querySelectorAll(this.el)
-    triggerEls.forEach((el) => {
-      this.onOpen(el)
-    })
+      const overlays = document.querySelectorAll('.g-modal__overlay')
+      overlays.forEach((el) => {
+        this.onCloseOverlay(el)
+      })
 
-    const overlays = document.querySelectorAll('.g-modal__overlay')
-    overlays.forEach((el) => {
-      this.onCloseOverlay(el)
-    })
+      const closeButtons = document.querySelectorAll('.js-modal-close')
+      closeButtons.forEach((el) => {
+        this.onCloseButton(el)
+      })
+    }
 
-    const closeButtons = document.querySelectorAll('.js-modal-close')
-    closeButtons.forEach((el) => {
-      this.onCloseButton(el)
-    })
-  }
+    onOpen(el) {
+      const target = document.querySelector(el.dataset.target)
 
-  onOpen(el) {
-    const target = document.querySelector(el.dataset.target)
-
-    el.addEventListener('click', () => {
-      var styleNode = document.createElement('style')
-      styleNode.id = 'inline-effects'
-      styleNode.innerHTML = `:root {
+      el.addEventListener('click', () => {
+        var styleNode = document.createElement('style')
+        styleNode.id = 'inline-effects'
+        styleNode.innerHTML = `:root {
         --open-effect: ${el.dataset.open};
         --close-effect: ${el.dataset.close};
       }`
-      document.head.appendChild(styleNode)
+        document.head.appendChild(styleNode)
 
-      document.body.classList.add('modal-open')
+        document.body.classList.add('modal-open')
 
-      this.scrollToggle(true)
+        this.scrollToggle(true)
 
-      target.classList.add('open')
-      target.setAttribute('aria-hidden', 'false')
-    })
-  }
+        target.classList.add('open')
+        target.setAttribute('aria-hidden', 'false')
+      })
+    }
 
-  onCloseOverlay(el) {
-    el.addEventListener('click', (event) => {
-      const isOverlay = (event.target as HTMLElement).classList.contains('g-modal__overlay')
-      if (isOverlay) {
+    onCloseOverlay(el) {
+      el.addEventListener('click', (event) => {
+        const isOverlay = (event.target as HTMLElement).classList.contains('g-modal__overlay')
+        if (isOverlay) {
+          const target = (event.target as HTMLElement).closest('.g-modal')
+          this.onClose(target)
+        }
+      })
+    }
+
+    onCloseButton(el) {
+      el.addEventListener('click', (event) => {
         const target = (event.target as HTMLElement).closest('.g-modal')
         this.onClose(target)
+      })
+    }
+
+    onClose(target) {
+      target.setAttribute('aria-hidden', 'true')
+
+      setTimeout(() => {
+        target?.classList.remove('open')
+        document.body.classList.remove('modal-open')
+        this.scrollToggle(false)
+        document.getElementById('inline-effects')?.remove()
+      }, this.options.closeDelay)
+    }
+
+    onKeydown(event) {
+      const target = document.querySelector('.g-modal.open')
+      if (event.keyCode === 27 && target !== null) {
+        this.onClose(target)
       }
-    })
-  }
+    }
 
-  onCloseButton(el) {
-    el.addEventListener('click', (event) => {
-      const target = (event.target as HTMLElement).closest('.g-modal')
-      this.onClose(target)
-    })
-  }
+    scrollToggle(show) {
+      if (!this._supportsTouchEvents()) {
+        if (show) {
+          document.documentElement.style.overflow = 'hidden'
+          document.documentElement.style.marginRight = this.scrollBarWidth + 'px'
 
-  onClose(target) {
-    target.setAttribute('aria-hidden', 'true')
-
-    setTimeout(() => {
-      target?.classList.remove('open')
-      document.body.classList.remove('modal-open')
-      this.scrollToggle(false)
-      document.getElementById('inline-effects')?.remove()
-    }, this.options.closeDelay)
-  }
-
-  onKeydown(event) {
-    const target = document.querySelector('.g-modal.open')
-    if (event.keyCode === 27 && target !== null) {
-      this.onClose(target)
+          return
+        }
+        document.documentElement.style.overflow = ''
+        document.documentElement.style.marginRight = ''
+      }
     }
   }
 
-  scrollToggle(show) {
-    if (!this._supportsTouchEvents()) {
-      if (show) {
-        document.documentElement.style.overflow = 'hidden'
-        document.documentElement.style.marginRight = this.scrollBarWidth + 'px'
-
-        return
-      }
-      document.documentElement.style.overflow = ''
-      document.documentElement.style.marginRight = ''
-    }
+  const init = (el, options) => {
+    new Modal(el, options)
   }
-}
+
+  return { init }
+})()
 
 export default GModal
 
