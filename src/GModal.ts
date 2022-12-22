@@ -1,8 +1,21 @@
+/**
+ * GModal core js file
+ */
+
+'use strict'
+
 class GModal {
   el: any
   scrollBarWidth: number
   options: {
     closeDelay: 200
+  }
+
+  constructor(el, options) {
+    this.el = el
+    this.options = options
+    this.scrollBarWidth = 0
+    this.initialize()
   }
 
   _supportsTouchEvents() {
@@ -17,13 +30,6 @@ class GModal {
     document.body.removeChild(scrollDiv)
 
     return scrollWidth
-  }
-
-  constructor(el, options) {
-    this.el = el
-    this.options = options
-    this.scrollBarWidth = 0
-    this.initialize()
   }
 
   initialize() {

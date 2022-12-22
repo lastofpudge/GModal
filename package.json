@@ -1,6 +1,6 @@
 {
   "name": "@lastofpudge/g-modal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tiny easy to use modal with zero dependencies",
   "main": "dist/gmodal.js",
   "files": [
@@ -27,6 +27,8 @@
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.20",
+    "browser-sync": "^2.27.11",
+    "browser-sync-webpack-plugin": "^2.3.0",
     "laravel-mix": "^6.0.49",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.57.1",

@@ -1,16 +1,15 @@
 :root {
-  --open-effect: "tmslideIn";
-  --close-effect: "tmslideOut";
+  --open-effect: 'tmslideIn';
+  --close-effect: 'tmslideOut';
 }
 
-@import "./effects/_fade";
-@import "./effects/_slide";
-@import "./effects/_zoom";
-@import "./effects/_hor";
-@import "./effects/_fromTop";
+@import './effects/_fade';
+@import './effects/_slide';
+@import './effects/_zoom';
+@import './effects/_hor';
+@import './effects/_fromTop';
 
-// endmodal
-.g-modal[aria-hidden="true"] {
+.g-modal[aria-hidden='true'] {
   .g-modal__layout {
     animation: var(--close-effect) 0.3s cubic-bezier(0, 0, 0.2, 1);
   }
@@ -19,7 +18,7 @@
   }
 }
 
-.g-modal[aria-hidden="false"] {
+.g-modal[aria-hidden='false'] {
   .g-modal__layout {
     animation: var(--open-effect) 0.3s cubic-bezier(0, 0, 0.2, 1);
   }
