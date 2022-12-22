@@ -1,10 +1,21 @@
 {
   "name": "@lastofpudge/g-modal",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "desc",
   "main": "dist/gmodal.js",
   "files": [
     "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lastofpudge/GModal.git"
+  },
+  "keywords": [
+    "popup",
+    "modal",
+    "lightbox",
+    "toast",
+    "alert"
   ],
   "scripts": {
     "dev": "mix",
