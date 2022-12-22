@@ -11,7 +11,7 @@
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
-    "prod": "mix --production"
+    "build": "mix --production"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.20",

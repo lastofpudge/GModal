@@ -6,6 +6,7 @@
     "baseUrl": "./",
     "strict": true,
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": false,
     "noImplicitAny": false,
     "lib": ["dom"]
