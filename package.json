@@ -1,6 +1,6 @@
 {
   "name": "@lastofpudge/g-modal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Tiny easy to use modal with zero dependencies",
   "main": "dist/gmodal.js",
   "files": [
@@ -15,7 +15,8 @@
     "modal",
     "lightbox",
     "toast",
-    "alert"
+    "alert",
+    "typescript"
   ],
   "scripts": {
     "dev": "mix",

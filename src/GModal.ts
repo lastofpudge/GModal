@@ -59,13 +59,15 @@ class GModal {
     const target = document.querySelector(el.dataset.target);
 
     el.addEventListener("click", () => {
-      var styleNode = document.createElement("style");
-      styleNode.id = "inline-effects";
-      styleNode.innerHTML = `:root { 
+      if (el.dataset.open !== undefined || el.dataset.close !== undefined) {
+        const styleNode = document.createElement("style");
+        styleNode.id = "inline-effects";
+        styleNode.innerHTML = `:root { 
         --open-effect: ${el.dataset.open}; 
         --close-effect: ${el.dataset.close}; 
       }`;
-      document.head.appendChild(styleNode);
+        document.head.appendChild(styleNode);
+      }
 
       document.body.classList.add("modal-open");
 
