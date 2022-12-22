@@ -1,6 +1,6 @@
 {
   "name": "@lastofpudge/g-modal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tiny easy to use modal with zero dependencies",
   "main": "dist/gmodal.js",
   "files": [
