@@ -96,6 +96,13 @@ class GModal {
     }, this.options.closeDelay)
   }
 
+  onKeydown(event) {
+    const target = document.querySelector('.g-modal.open')
+    if (event.keyCode === 27 && target !== null) {
+      this.onClose(target)
+    }
+  }
+
   scrollToggle(show) {
     if (!this._supportsTouchEvents()) {
       if (show) {

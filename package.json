@@ -1,10 +1,22 @@
 {
   "name": "@lastofpudge/g-modal",
-  "version": "1.0.0",
-  "description": "desc",
+  "version": "0.0.1",
+  "description": "Tiny easy to use modal with zero dependencies",
   "main": "dist/gmodal.js",
   "files": [
     "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lastofpudge/GModal.git"
+  },
+  "keywords": [
+    "popup",
+    "modal",
+    "lightbox",
+    "toast",
+    "alert",
+    "typescript"
   ],
   "scripts": {
     "dev": "mix",
