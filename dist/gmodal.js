@@ -67,6 +67,8 @@ var GModal = /** @class */function () {
       _this.scrollToggle(true);
       target.classList.add("open");
       target.setAttribute("aria-hidden", "false");
+      // const elid = document.querySelector(".g-modal__layout");
+      target.focus();
     });
   };
   GModal.prototype.onCloseOverlay = function (el) {

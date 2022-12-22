@@ -129,7 +129,7 @@
   display: block;
 }
 .g-modal__layout .close-btn {
-  border: none;
+  border: 1px solid transparent;
   outline: none;
   position: absolute;
   right: 0;
@@ -139,6 +139,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.g-modal__layout .close-btn:focus {
+  border-color: #111;
 }
 .g-modal__layout .close-btn svg {
   max-width: 90%;

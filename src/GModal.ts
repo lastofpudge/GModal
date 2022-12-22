@@ -75,6 +75,9 @@ class GModal {
 
       target.classList.add("open");
       target.setAttribute("aria-hidden", "false");
+
+      // const elid = document.querySelector(".g-modal__layout");
+      target.focus();
     });
   }
 
