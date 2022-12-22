@@ -1,0 +1,18 @@
+// from top
+@keyframes tmfromTopIn {
+  from {
+    transform: translateY(-20%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes tmfromTopOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}

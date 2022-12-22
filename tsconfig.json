@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "strict": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "lib": ["dom"]
+  },
+  "include": ["src/**/*"]
+}

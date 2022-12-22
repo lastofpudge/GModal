@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GModal</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        line-height: 1.15;
+      }
+      .size {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .container p{
+        margin-bottom: .1em;
+      }
+      
+      iframe,
+      img{
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      iframe{
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16/9;
+      }
+
+      .g-modal--no-spaces .g-modal__layout{
+        max-width: 600px;
+      }
+
+      .g-modal--no-spaces .g-modal__layout{
+        padding: 0;
+      }
+      /* end default */
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+             <br><br> 
+            <h1>GModal</h1>
+            <p>A tiny easy to use modal with zero dependencies:</p>
+
+            <code>
+              </br>
+              new GModal(".js-modal", {</br>
+                &nbsp;&nbsp;closeDelay: 200,</br>
+              });</br>
+            </code>
+            <br>
+            <em>Example: </em>
+            <div class="mt-2 mb-2">
+              <button class="js-modal btn btn-primary" data-target="#target" data-open="tmZoomIn" data-close="tmZoomOut">Zoom-in form</button>
+            </div>
+
+            <em>Basic effects</em>
+
+            <div class="mt-2 mb-4">
+              <button class="js-modal btn btn-success" data-target="#target2" data-open="tmfadeIn" data-close="tmfadeOut">
+                Fade in image
+              </button>
+              <button class="js-modal btn btn-danger" data-target="#target3" data-open="tmHorizontalIn" data-close="tmHorizontalOut">
+                Fade left video
+              </button>
+              <button class="js-modal btn btn-dark" data-target="#target4" data-open="tmfromTopIn" data-close="tmfromTopOut">
+                From top map
+              </button>
+            </div>
+
+            <p><code>.js-modal</code> is a selector for modal open button.</p>
+            <p>You can specify a target for modal buttons:</p>
+            <code>
+              data-target="#target"
+            </code>
+            <br>
+            <br>
+            <p>You also can specify modal open/close effects:</p>
+            <code>
+              data-open="tmHorizontalIn"
+              data-close="tmHorizontalOut"
+            </code>
+            
+            <br>
+            <p>To use custom effects create css animation and call it in data-open/close attributes</p>
+            <br>
+            <p>Close buttons should contain class called "js-modal-close".</p>
+            <p>In order to change modal position you can modify style props:<br>
+              <code> ".g-modal__overlay" "align-items/justify-content" properties.</code>
+            </p>
+          </div>
+        </div>
+    </div>
+
+    <!-- modal-1 -->
+    <div class="g-modal" id="target" aria-hidden="true" role="dialog">
+      <div class="g-modal__overlay">
+        <div class="g-modal__layout">
+          <button class="js-modal-close close-btn">
+            <img src="./close.svg" alt="">
+          </button>
+          <h2>Login</h2>
+          <form>
+            <!-- Email input -->
+            <div class="form-outline mb-2">
+              <input type="email" id="form2Example1" class="form-control" required/>
+              <label class="form-label" for="form2Example1">Email address</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-2">
+              <input type="password" id="form2Example2" class="form-control" />
+              <label class="form-label" for="form2Example2">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-2">Sign in</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal-2 -->
+    <div class="g-modal g-modal--no-spaces" id="target2" aria-hidden="true" role="dialog">
+      <div class="g-modal__overlay">
+        <div class="g-modal__layout">
+          <button class="js-modal-close close-btn">
+            <img src="./close.svg" alt="">
+          </button>
+          <img src="./example.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- modal-3 -->
+    <div class="g-modal g-modal--no-spaces" id="target3" aria-hidden="true" role="dialog">
+      <div class="g-modal__overlay">
+        <div class="g-modal__layout">
+          <button class="js-modal-close close-btn">
+            <img src="./close.svg" alt="">
+          </button>
+          <iframe width="900" height="506" src="//www.youtube.com/embed/0O2aH4XLbto" title="Ronald Jenkees - Throwing Fire" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal-4 -->
+    <div class="g-modal g-modal--no-spaces" id="target4" aria-hidden="true" role="dialog">
+      <div class="g-modal__overlay">
+        <div class="g-modal__layout">
+          <button class="js-modal-close close-btn">
+            <img src="./close.svg" alt="">
+          </button>
+          <iframe src="//www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d152450.56862978198!2d-97.1179690244387!3d32.40004182871907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e58b2b3427851%3A0x3e0d43ae63c8d01b!2z0JLQuNC90YPRgSwg0KLQtdGF0LDRgSwg0KHQqNCQ!5e0!3m2!1sru!2sua!4v1671672256599!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="./gmodal.js"></script>
+    <script>
+      new GModal(".js-modal", {
+        closeDelay: 200,
+      });
+    </script>
+  </body>
+</html>

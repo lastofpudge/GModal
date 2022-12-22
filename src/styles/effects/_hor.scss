@@ -1,0 +1,18 @@
+// horizontal
+@keyframes tmHorizontalIn {
+  from {
+    transform: translateX(-50px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tmHorizontalOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50px);
+  }
+}

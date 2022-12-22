@@ -1,0 +1,57 @@
+@use "_effects";
+
+.g-modal__overlay {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.g-modal__layout {
+  cursor: default;
+  max-width: 480px;
+  min-height: 100px;
+  max-height: 100vh;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 999;
+  background: #ffff;
+  padding: 15px;
+  box-sizing: border-box;
+  will-change: transform;
+  iframe {
+    display: block;
+  }
+  .close-btn {
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      max-width: 90%;
+      pointer-events: none;
+    }
+  }
+}
+
+.g-modal.open {
+  display: block;
+}
+
+.g-modal:not(.open) {
+  display: none;
+}
