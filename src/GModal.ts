@@ -28,8 +28,9 @@ class GModal {
   constructor(el, options) {
     this.el = el;
     this.options = options;
-
     this.scrollBarWidth = 0;
+
+    this.onKeydown = this.onKeydown.bind(this);
 
     this.initialize();
   }
@@ -72,11 +73,10 @@ class GModal {
       document.body.classList.add("modal-open");
 
       this.scrollToggle(true);
+      document.addEventListener("keydown", this.onKeydown);
 
       target.classList.add("open");
       target.setAttribute("aria-hidden", "false");
-
-      // const elid = document.querySelector(".g-modal__layout");
       target.focus();
     });
   }
@@ -105,8 +105,17 @@ class GModal {
       target?.classList.remove("open");
       document.body.classList.remove("modal-open");
       this.scrollToggle(false);
+
+      document.removeEventListener("keydown", this.onKeydown);
       document.getElementById("inline-effects")?.remove();
     }, this.options.closeDelay);
+  }
+
+  onKeydown(event) {
+    const target = document.querySelector(".g-modal.open");
+    if (event.keyCode === 27 && target !== null) {
+      this.onClose(target);
+    }
   }
 
   scrollToggle(show) {
