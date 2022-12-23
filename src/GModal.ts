@@ -67,11 +67,15 @@ const GModal = (() => {
 
         document.body.classList.add('modal-open')
 
-        this.scrollToggle(true)
-
-        target.classList.add('open')
-        target.setAttribute('aria-hidden', 'false')
+        this.onOpenModalBox(target)
       })
+    }
+
+    onOpenModalBox(target) {
+      this.scrollToggle(true)
+
+      target.classList.add('open')
+      target.setAttribute('aria-hidden', 'false')
     }
 
     onCloseOverlay(el) {
@@ -123,11 +127,21 @@ const GModal = (() => {
     }
   }
 
+  let activeModal: any
+
   const init = (el, options) => {
-    new Modal(el, options)
+    activeModal = new Modal(el, options)
   }
 
-  return { init }
+  const open = (el) => {
+    let curEl = document.querySelector(el)
+
+    if (!curEl) throw new Error(`${el} element not found`)
+
+    activeModal.onOpenModalBox(curEl)
+  }
+
+  return { init, open }
 })()
 
 export default GModal
