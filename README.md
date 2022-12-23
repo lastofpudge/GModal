@@ -3,7 +3,7 @@
 GModal
 =======
 
-A tiny easy to use modal with zero dependencies:
+A tiny easy to use 6kb size modal with zero dependencies:
 
 ## Start
 
