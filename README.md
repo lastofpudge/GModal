@@ -1,8 +1,7 @@
+<img src="https://styleci.io/repos/581013114/shield">
 <a href="https://bundlephobia.com/package/@lastofpudge/g-modal@latest" target="\_parent">
 <img src="https://badgen.net/github/release/lastofpudge/GModal">
-</a> 
-<img src="https://badgen.net/github/license/lastofpudge/GModal">
-<img src="https://styleci.io/repos/581013114/shield">
+</a><img src="https://badgen.net/github/license/lastofpudge/GModal">
 
 GModal
 =======
