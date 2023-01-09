@@ -51,13 +51,16 @@ const GModal = (() => {
       closeButtons.forEach((el) => {
         this.onCloseButton(el)
       })
+
+      document.onkeydown = (event) => this.onKeydown(event)
+
     }
 
     onOpen(el) {
       const target = document.querySelector(el.dataset.target)
 
       el.addEventListener('click', () => {
-        var styleNode = document.createElement('style')
+        const styleNode = document.createElement('style')
         styleNode.id = 'inline-effects'
         styleNode.innerHTML = `:root {
         --open-effect: ${el.dataset.open};
@@ -67,11 +70,11 @@ const GModal = (() => {
 
         document.body.classList.add('modal-open')
 
-        this.onOpenModalBox(target)
+        this.onOpenModal(target)
       })
     }
 
-    onOpenModalBox(target) {
+    onOpenModal(target) {
       this.scrollToggle(true)
 
       target.classList.add('open')
@@ -107,9 +110,9 @@ const GModal = (() => {
     }
 
     onKeydown(event) {
-      const target = document.querySelector('.g-modal.open')
-      if (event.keyCode === 27 && target !== null) {
-        this.onClose(target)
+      if (event.keyCode === 27 ) {
+        const target = document.querySelector('.g-modal.open')
+        if(target !== null) this.onClose(target)
       }
     }
 
@@ -138,7 +141,7 @@ const GModal = (() => {
 
     if (!curEl) throw new Error(`${el} element not found`)
 
-    activeModal.onOpenModalBox(curEl)
+    activeModal.onOpenModal(curEl)
   }
 
   return { init, open }

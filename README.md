@@ -1,14 +1,30 @@
-# GModal
+<img src="https://styleci.io/repos/581013114/shield">
+
+GModal
+=======
 
 A tiny easy to use modal with zero dependencies:
 
-`new GModal.init(".js-modal", {`
-  `closeDelay: 200,`
-`});`
+## Start
+
+Download the latest version from [GitHub](https://github.com/lastofpudge/GModal/releases/latest
+) or via package managers:
+```
+npm i @lastofpudge/g-modal
+yarn add @lastofpudge/g-modal
+```
+
+Initialize modal:
+
+```javascript
+new GModal.init(".js-modal", {
+  closeDelay: 200,
+});
+```
 
 `.js-modal` is a selector for modal open button.
 
-You can specify a target for modal buttons:
+You can specify a target for the modal buttons:
 
 `data-target="#target"`
 
@@ -18,7 +34,7 @@ You also can specify modal open/close effects:
 
 To use custom effects create css animation and call it in data-open/close attributes
 
-Close buttons should contain class called "js-modal-close".
+Close buttons should contain a class called "js-modal-close".
 
-In order to change modal position you can modify style props:
+In order to change the modal position you can modify style props:
 `".g-modal__overlay" "align-items/justify-content" properties.`
