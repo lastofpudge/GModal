@@ -53,7 +53,6 @@ const GModal = (() => {
       })
 
       document.onkeydown = (event) => this.onKeydown(event)
-
     }
 
     onOpen(el) {
@@ -110,9 +109,9 @@ const GModal = (() => {
     }
 
     onKeydown(event) {
-      if (event.keyCode === 27 ) {
+      if (event.keyCode === 27) {
         const target = document.querySelector('.g-modal.open')
-        if(target !== null) this.onClose(target)
+        if (target !== null) this.onClose(target)
       }
     }
 
@@ -120,12 +119,11 @@ const GModal = (() => {
       if (!this._supportsTouchEvents()) {
         if (show) {
           document.documentElement.style.overflow = 'hidden'
-          document.documentElement.style.marginRight = this.scrollBarWidth + 'px'
-
-          return
+          document.documentElement.style.marginRight = `${this.scrollBarWidth}px`
+        } else {
+          document.documentElement.style.overflow = ''
+          document.documentElement.style.marginRight = ''
         }
-        document.documentElement.style.overflow = ''
-        document.documentElement.style.marginRight = ''
       }
     }
   }

@@ -1,0 +1,12 @@
+{
+  "name": "tests",
+  "description": "Tests for g-modal",
+  "scripts": {
+    "start": "parcel ../dist/*.html",
+    "test": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^12.3.0",
+    "parcel": "^2.8.2"
+  }
+}
