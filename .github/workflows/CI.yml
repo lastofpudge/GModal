@@ -32,7 +32,6 @@ jobs:
           runTests: false # just build site
       - uses: cypress-io/github-action@v2
         with:
-          command-prefix: yarn dlx
           install: false
           working-directory: tests
           start: yarn start
