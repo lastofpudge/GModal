@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      - run: yarn install cypress -wD # or yarn add cypress -wD
+      - run: yarn add cypress -wD # or yarn add cypress -wD
       - uses: cypress-io/github-action@v3.1.0
         with:
           build: yarn build
