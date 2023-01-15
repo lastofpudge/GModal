@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      - uses: cypress-io/github-action@v3
+      - uses: cypress-io/github-action@v2
         with:
           build: yarn build
           runTests: false # just build site
