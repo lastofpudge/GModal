@@ -12,7 +12,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           cmd: yarn install && yarn build
 
@@ -20,21 +20,12 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.x.x
         with:
-          node-version: '16.x'
-      - run: yarn add cypress -wD # or yarn add cypress -wD
-      - uses: cypress-io/github-action@v3.1.0
-        with:
-          build: yarn build
-          runTests: false # just build site
-      - uses: cypress-io/github-action@v3.1.0
-        with:
-          install: false
           working-directory: tests
-          command-prefix: yarn dlx
-          start: yarn start
+          start: yarn run start
           wait-on: http://localhost:1234
