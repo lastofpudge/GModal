@@ -2,9 +2,9 @@ name: Build and Test
 
 on:
   push:
-    branches: [next, master]
+    branches: [next, main]
   pull_request:
-    branches: [next, master]
+    branches: [next, main]
 
 jobs:
   # Build the library and site
