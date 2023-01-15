@@ -22,7 +22,7 @@ new GModal.init(".js-modal", {
 });
 ```
 
-`.js-modal` is a selector for modal open button.
+`.js-modal` is a selector for the modal open button.
 
 You can specify a target for the modal buttons:
 
@@ -32,9 +32,9 @@ You also can specify modal open/close effects:
 
 `data-open="tmHorizontalIn" data-close="tmHorizontalOut"`
 
-To use custom effects create css animation and call it in data-open/close attributes
+To use custom effects, create css animation and call it in data-open/close attributes
 
 Close buttons should contain a class called "js-modal-close".
 
-In order to change the modal position you can modify style props:
+To change the modal position, you can modify style props:
 `".g-modal__overlay" "align-items/justify-content" properties.`
