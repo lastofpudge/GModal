@@ -2,6 +2,7 @@
   "name": "@lastofpudge/g-modal",
   "version": "0.0.6",
   "description": "Tiny easy to use modal with zero dependencies",
+  "author": "Andrii D.",
   "main": "dist/gmodal.js",
   "files": [
     "/dist"

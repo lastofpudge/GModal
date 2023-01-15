@@ -1,8 +1,12 @@
 {
   "name": "tests",
   "description": "Tests for g-modal",
+  "author": "Andrii D.",
+  "license": "MIT",
   "scripts": {
     "start": "parcel ../dist/*.html",
+    "cypress:open": "cypress open",
+    "cypress:cli": "cypress run",
     "test": "cypress run"
   },
   "devDependencies": {
