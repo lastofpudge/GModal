@@ -8,3 +8,4 @@ tests/dist
 .parcel-cache
 package-lock.json
 yarn-error.log
+.parcel-cache
