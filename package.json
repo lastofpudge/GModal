@@ -23,7 +23,8 @@
     "dev": "mix",
     "watch": "mix watch",
     "hot": "mix watch --hot",
-    "build": "mix --production"
+    "build": "mix --production",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.20",
