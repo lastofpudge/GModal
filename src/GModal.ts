@@ -26,6 +26,7 @@ const GModal = (() => {
       const scrollDiv = document.createElement('div')
       scrollDiv.setAttribute('style', 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;')
       document.body.appendChild(scrollDiv)
+
       const scrollWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
       document.body.removeChild(scrollDiv)
 
@@ -37,9 +38,12 @@ const GModal = (() => {
 
       if (pageHasScroll) this.scrollBarWidth = this._getScrollBarWidth()
 
+      const styleNode = document.createElement('style')
+      styleNode.id = 'inline-effects'
+
       const triggerEls = document.querySelectorAll(this.el)
       triggerEls.forEach((el) => {
-        this.onOpen(el)
+        this.onOpen(el, styleNode)
       })
 
       const overlays = document.querySelectorAll('.g-modal__overlay')
@@ -55,18 +59,16 @@ const GModal = (() => {
       document.onkeydown = (event) => this.onKeydown(event)
     }
 
-    onOpen(el) {
+    onOpen(el, styleNode) {
       const target = document.querySelector(el.dataset.target)
 
       el.addEventListener('click', () => {
-        const styleNode = document.createElement('style')
-        styleNode.id = 'inline-effects'
         styleNode.innerHTML = `:root {
-        --open-effect: ${el.dataset.open};
-        --close-effect: ${el.dataset.close};
-      }`
-        document.head.appendChild(styleNode)
+          --open-effect: ${el.dataset.open};
+          --close-effect: ${el.dataset.close};
+        }`
 
+        document.head.appendChild(styleNode)
         document.body.classList.add('modal-open')
 
         this.onOpenModal(target)
@@ -82,9 +84,11 @@ const GModal = (() => {
 
     onCloseOverlay(el) {
       el.addEventListener('click', (event) => {
-        const isOverlay = (event.target as HTMLElement).classList.contains('g-modal__overlay')
+        const targetElement = event.target as HTMLElement
+
+        const isOverlay = targetElement.classList.contains('g-modal__overlay')
         if (isOverlay) {
-          const target = (event.target as HTMLElement).closest('.g-modal')
+          const target = targetElement.closest('.g-modal')
           this.onClose(target)
         }
       })
@@ -101,9 +105,10 @@ const GModal = (() => {
       target.setAttribute('aria-hidden', 'true')
 
       setTimeout(() => {
-        target?.classList.remove('open')
+        target.classList.remove('open')
         document.body.classList.remove('modal-open')
         this.scrollToggle(false)
+
         document.getElementById('inline-effects')?.remove()
       }, this.options.closeDelay)
     }
@@ -111,19 +116,15 @@ const GModal = (() => {
     onKeydown(event) {
       if (event.keyCode === 27) {
         const target = document.querySelector('.g-modal.open')
-        if (target !== null) this.onClose(target)
+        target ? this.onClose(target) : null
       }
     }
 
     scrollToggle(show) {
       if (!this._supportsTouchEvents()) {
-        if (show) {
-          document.documentElement.style.overflow = 'hidden'
-          document.documentElement.style.marginRight = `${this.scrollBarWidth}px`
-        } else {
-          document.documentElement.style.overflow = ''
-          document.documentElement.style.marginRight = ''
-        }
+        const body = document.documentElement
+        body.style.overflow = show ? 'hidden' : ''
+        body.style.marginRight = show ? `${this.scrollBarWidth}px` : ''
       }
     }
   }
