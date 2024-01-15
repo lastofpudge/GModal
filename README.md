@@ -38,3 +38,5 @@ Close buttons should contain a class called "js-modal-close".
 
 To change the modal position, you can modify style props:
 `".g-modal__overlay" "align-items/justify-content" properties.`
+
+![image info](https://github.com/lastofpudge/GModal/blob/main/browsers.png)
